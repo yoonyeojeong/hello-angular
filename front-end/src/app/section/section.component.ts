@@ -12,15 +12,12 @@ export class SectionComponent implements OnInit {
   commandText: any;
 
   startTime($event: string) {
-    if ($event == 'start') {
-      if (this.present == 'start') {
-        this.present = 'stop';
-      } else if (this.present == 'stop' || this.present == 'reset') {
-        this.present = 'start';
-      }
+    if ($event === 'start') {
+      this.present = this.present === 'start' ? 'stop' : 'start';
     } else {
       this.present = $event;
     }
   }
+
   ngOnInit() {}
 }

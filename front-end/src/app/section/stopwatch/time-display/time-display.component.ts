@@ -19,21 +19,22 @@ export class TimeDisplayComponent implements OnInit {
   timeInterval: any;
 
   timeStart() {
+    this.timeStop();
     this.timeInterval = setInterval(() => {
       this.milliseconds++;
       this.min = String(this.minutes).padStart(2, '0');
       this.sec = String(this.seconds).padStart(2, '0');
       this.ms = String(this.milliseconds).padStart(2, '0');
 
-      if (this.milliseconds == 100) {
+      if (this.milliseconds >= 100) {
         this.milliseconds = 0;
         this.seconds++;
       }
-      if (this.seconds == 60) {
+      if (this.seconds >= 60) {
         this.seconds = 0;
         this.minutes++;
       }
-    }, 1);
+    }, 10);
   }
   timeStop() {
     clearInterval(this.timeInterval);
